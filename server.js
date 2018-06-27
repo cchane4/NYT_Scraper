@@ -31,7 +31,7 @@ mongoose.connect(db, function(error){
     console.log(error);
   }
   else{
-    console.log( "mongoose connection is successful");
+    console.log("mongoose connection is successful");
   }
 });
 
