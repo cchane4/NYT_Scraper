@@ -10,7 +10,7 @@ $(document).ready(function(){
         $.get("/api/headline?save=false")
         .then(function(data){ 
             if (data && data.length){ 
-                rnederArticles(data); 
+                renderArticles(data); 
             } 
             else{ 
                 renderEmpty(); 
