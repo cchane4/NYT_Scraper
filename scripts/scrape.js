@@ -6,7 +6,7 @@ var cheerio = require("cheerio");
 //for each theme summary, grab story heading and summary
 // if head and sum exist, clean up the text  and push the new data to the articles array
 //callback function sends the articles
-var scrape = function(cb) {
+var scrape = function (cb) {
 
         request("http://www.nytimes.com", function(err, res, body) {
 

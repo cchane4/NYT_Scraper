@@ -10,6 +10,7 @@ $(document).ready(function(){
         $.get("/api/headline?save=false")
         .then(function(data){ 
             if (data && data.length){ 
+                //console.log(data); 
                 renderArticles(data); 
             } 
             else{ 
@@ -87,7 +88,6 @@ function handleArticleSave(){
 function handleArticleScrape(){ 
     $.get("/api/fetch")
       .then(function(data){ 
-      
         initPage();
         bootbox.alert("<h3 class='text-center m-top-80'>" + data.message + "<h3>" ); 
       }); 
