@@ -1,3 +1,8 @@
+var scrape = require("../scripts/scrape"); 
+var headlinesController = require("../controllers/headlines"); 
+var notesController = require("../controllers/notes"); 
+
+
 module.exports = function(router){
 // this route renders the homepage: home.handlebars
   router.get("/", function(req, res){
@@ -29,9 +34,9 @@ router.get("/api/fetch", function(req,res){
     var query = {};
     if (req.query.saved){
         query = req.query;
-    }
+    } 
 
-    headlinesController.get(query, function(data){
+    headlinesController.get(query, function(err,data){
         res.json(data);
     });
   });
@@ -39,7 +44,7 @@ router.get("/api/fetch", function(req,res){
   router.delete("/api/headlines/:id", function(req, res){
     var query = {};
     query.id = req.params.id;
-    headlinesController.delete(query, function(err, data){
+    headlinesController.delete(query, function(data){
         res.json(data);
     });
   });
@@ -48,6 +53,30 @@ router.get("/api/fetch", function(req,res){
     headlinesController.update(req.body, function(err, data){
         res.json(data);
      });
+  });
+
+router.get("/api/notes/:headline_id?", function(req,res){ 
+    var query = {}; 
+    if (req.params.headline_id){ 
+        query._id = req.params.headline._id; 
+
+    }
+    notesController.get(query, function(err,data){ 
+        res.json(data); 
+    });
+});
+
+router.delete("/api/notes/:id", function(req, res){
+    var query = {};
+    query.id = req.params.id;
+    notesController.delete(query, function(err, data){
+        res.json(data);
+    });
+  });
+  router.post("/api/notes", function(req, res){ 
+      notesController.save(req.body, function(data){ 
+          res.json(data); 
+      });
   });
 
 }

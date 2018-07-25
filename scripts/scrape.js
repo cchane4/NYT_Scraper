@@ -19,7 +19,7 @@ var scrape = function(cb) {
                         var head = $(this).children(".story-heading").text().trim();
                         var sum = $(this).children(".summary").text().trim();
 
-                        if (head && summ) {
+                        if (head && sum) {
                             var headNeat = head.replace(/(\r\n|\n|\r|\t|\s+)/gm," ").trim();
                             var sumNeat = sum.replace(/(\r\n|\n|\r|\t|\s+)/gm," ").trim();
                                 var dataToAdd = {
