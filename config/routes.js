@@ -36,7 +36,7 @@ router.get("/api/fetch", function(req,res){
         query = req.query;
     } 
 
-    headlinesController.get(query, function(err,data){
+    headlinesController.get(query, function(data){
         res.json(data);
     });
   });
@@ -44,7 +44,7 @@ router.get("/api/fetch", function(req,res){
   router.delete("/api/headlines/:id", function(req, res){
     var query = {};
     query.id = req.params.id;
-    headlinesController.delete(query, function(data){
+    headlinesController.delete(query, function(err, data){
         res.json(data);
     });
   });

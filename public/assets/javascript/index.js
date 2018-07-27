@@ -5,7 +5,7 @@ $(document).ready(function(){
     
     initPage(); 
 
-    function initPage(){ 
+    function initPage(){  
         articleContainer.empty(); 
         $.get("/api/headline?save=false")
         .then(function(data){ 
@@ -23,7 +23,7 @@ $(document).ready(function(){
     function renderArticles(articles){ 
     var articlePanels = []; 
 
-    for (var i = 0; i < artilces.length; i++){ 
+    for (var i = 0; i < articles.length; i++){ 
     articlePanels.push(createPanel(articles[i])); 
 }
     articleContainer.append(articlePanels); 
@@ -32,12 +32,12 @@ $(document).ready(function(){
 
 function createPanel(article){ 
   
-        var Panel = 
+        var panel = 
         $([ "<div class='panel panel-default'>", 
            "<div class='panel-heading'>", 
             "<h3>",
         article.headline, 
-        "<a> class='btn btn-sucess save'>", 
+        "<a> class='btn btn-success save'>", 
         "Save Article",
         "<a>", 
         "<h3>", 
@@ -63,6 +63,7 @@ function renderEmpty(){
         "<div>", 
         "<div class='panel-body text-center'>", 
         "<h4><a class='scrape-new'>Try Scraping New Articles</a></h4>", 
+        "<h4><a href='/saved'>Go To Saved Articles</a></h4>",
         "</div>", 
         "</div>"
     ].join("")); 
@@ -70,7 +71,7 @@ function renderEmpty(){
 } 
 
 function handleArticleSave(){
-    var articleToSave = $(this).parents('.panel').data();
+    var articleToSave = $(this).parents(".panel").data();
     articleToSave.saved = true; 
 
     $.ajax({ 
@@ -85,6 +86,7 @@ function handleArticleSave(){
         }
     });
 }
+
 function handleArticleScrape(){ 
     $.get("/api/fetch")
       .then(function(data){ 
