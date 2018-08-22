@@ -13,14 +13,14 @@ module.exports = {
     fetch: function(cb){
         scrape(function(data){
             var articles = data;
-            for (var i=0; i < articles.length; i++){
+            for ( var i = 0; i < articles.length; i++){
                 articles[i].date = makeDate();
                 articles[i].saved = false;
             }
 //NOTE: this is a mongo function: puts all he in the Headline collection of mongo database
 // order isnt necessary and if we catch an error in an article the process continues
 // the callback returns error in the docs
-            Headline.collection.insertMany(articles, {ordered:false}, function(err, docs){
+            Headline.collection.insertMany(articles, { ordered: false}, function(err, docs){
                 cb(err, docs);
             });
         });

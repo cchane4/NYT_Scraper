@@ -9,7 +9,7 @@ $(document).ready(function(){
 
  function initPage(){ 
     articleContainer.empty(); 
-    $.get("/api/headlines?save=true")
+    $.get("/api/headlines?saved=true")
     .then(function(data){ 
         if (data && data.length){ 
             renderArticles(data); 
@@ -18,7 +18,7 @@ $(document).ready(function(){
             renderEmpty(); 
         }
 
-        }); 
+    }); 
 }
 
 function renderArticles(articles){ 
@@ -37,12 +37,12 @@ function createPanel(article){
        "<div class='panel-heading'>", 
         "<h3>",
     article.headline, 
-    "<a class='btn btn-sucess save'>", 
+    "<a class='btn btn-danger delete'>", 
     "Delete From Saved",
     "</a>",
     "<a class='btn btn-info notes'>Article Notes</a>",  
-    "<h3>", 
-    "<div>", 
+    "</h3>", 
+    "</div>", 
     "<div class='panel-body'>", 
     article.summary, 
     "</div>", 
@@ -58,11 +58,11 @@ function renderEmpty(){
     var emptyAlert = 
     $(["<div class='alert alert-warning text-center'>", 
         "<h4> Uh Oh. Looks like we don't have any new articles.</h4>", 
-        "<div>", 
+        "</div>", 
         "<div class='panel panel-default'>", 
         "<div class='panel-heading text-center'>", 
         "<h3>Would You Like to Browse Available Articles First?</h3>", 
-        "<div>", 
+        "</div>", 
         "<div class='panel-body text-center'>", 
         "<h4><a href='/'>Browse Articles</a></h4>", 
         "</div>", 
@@ -113,14 +113,14 @@ function handleArticleDelete() {
 } 
 
 function handleArticleNotes(){ 
-    var currentArticle = $(this).parents("panel").data(); 
+    var currentArticle = $(this).parents(".panel").data(); 
     $.get("api/notes/" + currentArticle._id).then(function(data){ 
         var modalText = [ 
             "<div class='container-fluid text-center'>", 
             "<h4>Notes For Article: ", 
             currentArticle._id,
             "</h4>", 
-            "<hr/>", 
+            "<hr />", 
             "<ul class='list-group note-container'>",
             "</ul>", 
             "<textarea placeholder='New Note' rows='4' cols='60'></textarea>",

@@ -21,9 +21,8 @@ app.engine("handlebars", expressHandlebars({
 
 app.set('view engine', "handlebars");
 
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(router);
 var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";

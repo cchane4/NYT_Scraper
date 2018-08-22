@@ -8,7 +8,7 @@ html {
     background-image: url("../images/paper.png");
   }
   
-  .card a:not([href]):not([tabindex]).scrape-new {
+  .panel a:not([href]):not([tabindex]).scrape-new {
     color: #2196F3;
   }
   
@@ -17,8 +17,7 @@ html {
     bottom: 0;
     width: 100%;
     height: 80px;
-    color: white;
-    background-color: #2196f3;
+    background-color: #f5f5f5;
   }
   
   .navbar {
@@ -76,38 +75,35 @@ html {
     padding-bottom: 25px;
   }
   
-  .card {
+  .panel {
     border-radius: 0;
     box-shadow: 3px 3px 20px lightslategrey;
-    margin: 20px 0;
   }
   
-  .card .card-header {
+  .panel.panel-default .panel-heading {
     background-color: #2196f3;
-    position: relative;
-    padding-top: 30px;
-    padding-bottom: 30px;
+  
   }
   
-  .card .card-header h3 {
+  .panel .panel-heading h3 {
     color: white;
   }
   
-  .card .card-header .btn {
+  .panel .panel-heading .btn {
     position: absolute;
     top: 20px;
     right: 20px;
   }
   
-  .card .card-header .btn.delete {
+  .panel .panel-heading .btn.delete {
     right: 160px;
   }
   
-  .card .card-body {
+  .panel .panel-body {
     font-size: 16px;
   }
   
-  .card .card-header .article-link {
+  .panel .panel-heading .article-link {
     color: white;
     display: inline-block;
     width: 80%;
@@ -135,12 +131,12 @@ html {
     color: white;
   }
   
-  .navbar-nav > li > a.scrape-new:hover,
+  .navbar-inverse .navbar-nav > li > a.scrape-new:hover,
   .navbar-nav > li > a.clear:hover {
     background: #4caf50;
   }
   
-  .navbar-nav > li > a.scrape-new:active {
+  .navbar-inverse .navbar-nav > li > a.scrape-new:active {
     background: #e51c23;
   }
   
@@ -155,12 +151,15 @@ html {
   textarea {
     padding: 10px;
     resize: none;
-    width: 100%;
+
   }
   
   .bootbox-body .btn {
     float: right;
     margin: 5px;
+  }
+  .note.list-group-item { 
+    padding: 30px;
   }
   
   .note.list-group-item .btn {
@@ -168,3 +167,6 @@ html {
     bottom: 10px;
   }
   
+  .alert-warning { 
+    background-color: #ff9800; 
+  }
