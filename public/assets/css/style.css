@@ -82,28 +82,29 @@ html {
   
   .panel.panel-default .panel-heading {
     background-color: #2196f3;
+    position: relative; 
   
   }
   
-  .panel .panel-heading h3 {
+  .panel.panel-default .panel-heading h3 {
     color: white;
   }
   
-  .panel .panel-heading .btn {
+  .panel.panel-default .panel-heading .btn {
     position: absolute;
     top: 20px;
     right: 20px;
   }
   
-  .panel .panel-heading .btn.delete {
+  .panel.panel-default .panel-heading .btn.delete {
     right: 160px;
   }
   
-  .panel .panel-body {
+  .panel.panel-default .panel-body {
     font-size: 16px;
   }
   
-  .panel .panel-heading .article-link {
+  .panel.panel-default .panel-heading .article-link {
     color: white;
     display: inline-block;
     width: 80%;
@@ -121,12 +122,16 @@ html {
     font-weight: 800;
     background: #0c7cd5;
   }
+
+  .btn-primary {
+    background: #13334d;
+  }
+  
   
   .navbar-nav > li > a.scrape-new,
   .navbar-nav > li > a.clear {
     padding: 10px;
     margin-top: 10px;
-    margin-left: 10px;
     font-weight: 800;
     color: white;
   }
@@ -167,6 +172,3 @@ html {
     bottom: 10px;
   }
   
-  .alert-warning { 
-    background-color: #ff9800; 
-  }

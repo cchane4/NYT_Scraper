@@ -22,28 +22,25 @@ router.get("/api/fetch", function(req,res){
         }
         else {
             res.json({
-                message: "Added" + docs.insteredCount + "new Articles!"
+                message: "Added" + docs.insertedCount + "new Articles!"
             });
         }
-
-
     });
   });
 
   router.get("/api/headlines", function(req, res){
-    var query = {};
-    if (req.query.saved){
-        query = req.query;
-    }
+    // var query = {};
+    // if (req.query.saved){
+    //     query = req.query;
+    // }
 
-    headlinesController.get(query, function(data){
+    headlinesController.get(req.query, function(data){
         res.json(data);
     });
   });
 
   router.delete("/api/headlines/:id", function(req, res){
-    var query = {};
-    query.id = req.params.id;
+    var query = { _id: req.params.id}; 
     headlinesController.delete(query, function(err, data){
         res.json(data);
     });

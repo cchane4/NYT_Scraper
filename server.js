@@ -1,4 +1,5 @@
 var express = require('express');
+var logger = require("morgan");
 var mongoose = require('mongoose');
 var expressHandlebars = require('express-handlebars');
 var bodyParser = require('body-parser');
@@ -20,13 +21,15 @@ app.engine("handlebars", expressHandlebars({
 }));
 
 app.set('view engine', "handlebars");
-
+// Use morgan logger for logging requests
+app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(router);
 var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 // connecting to the database
+mongoose.Promise = Promise; 
 mongoose.connect(db, function(error){
   if (error) {
     console.log(error);

@@ -14,12 +14,12 @@ module.exports = {
     save: function(data,cb){
         var newNote = {
             _headlineId: data._id,
-            date:makeDate(),
+            date: makeDate(),
             noteText: data.noteText
         };
 // takes the note and creates a new Note. if error console.log it
 // if not the note is passed to the callback function
-        Note.create(newNote, function(err,doc){
+        Note.create(newNote, function (err , doc){
             if (err){
                 console.log(err);
             }
@@ -32,7 +32,7 @@ module.exports = {
 //deletes the note
     delete: function(data,cb){
         Note.remove({
-            _id:data._id
+            _id: data._id
         }, cb);
     }
 };

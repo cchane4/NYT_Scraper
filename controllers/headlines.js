@@ -42,8 +42,8 @@ module.exports = {
     },
 // update new scraped articles with relevant id and any info pass to the articles
     update: function(query, cb){
-        Headline.update({_id: query._id}, {
+        Headline.update({ _id: query._id }, {
             $set: query
         }, {}, cb);
     }
-}
+}; 
